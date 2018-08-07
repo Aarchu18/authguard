@@ -28,6 +28,11 @@ component:NotAuthorizedComponent
   canActivate:[AuthsServiceService]
 
 },
+{
+  path:"**",
+  component:NotAuthorizedComponent,
+  
+},
 
 ]
 

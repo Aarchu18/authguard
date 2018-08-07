@@ -7,24 +7,30 @@ export class AuthsServiceService {
 
   constructor(private route: Router) { }
   canActivate() {
-    if (localStorage.getItem("username")) {
-      if (localStorage.getItem("username") == "user" && localStorage.getItem("password") == "password"){
-       this.route.navigate['/user'];
+    if (localStorage.getItem("userName")) {
+
+      if (localStorage.getItem("userName") === "user" && localStorage.getItem("password") === "user")
+       {
+        console.log("yes");
+      //  this.route.navigate['/user'];
+        return true;
+        
+      }
+      else if (localStorage.getItem("userName") === "admin" && localStorage.getItem("password") === "admin")
+       {
+        //    this.route.navigate['/admin'];
         return true;
       }
-      else if(localStorage.getItem("username")=="admin" && localStorage.getItem("password")=="admin"){
-         this.route.navigate['/admin'];
-        return true;
-      }
-      else
-      {
-        this.route.navigate['/notAuthorized'];
+      
+      else {
+        this.route.navigate(['/notAuthorized']);
         return false;
       }
     }
-      else{
-        return false;
-      }
+    else {
+      this.route.navigate(['/notAuthorized']);
+      return false;
     }
   }
+}
 
